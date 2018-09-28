@@ -1,0 +1,68 @@
+
+@mixin main-background {
+	background: #134E5E;  
+	background: -webkit-linear-gradient(to bottom, #71B280, #134E5E);  
+	background: linear-gradient(to bottom, #71B280, #134E5E);
+}
+
+@mixin gradient-recommendations{
+	background: #C9D6FF;
+	background: -webkit-linear-gradient(to top, #99afff29, #edf5f7);
+	background:linear-gradient(to top, #99afff29, #edf5f7);
+
+
+}
+@mixin transition-search-top{
+	-webkit-transition-property: top height;
+    -webkit-transition-duration: 0.8s;
+	-webkit-transition-timing-function: ease-in-out;
+	transition-property: top height;
+	transition-duration: 0.8s;
+	transition-timing-function: ease-in-out;
+}
+
+@mixin transition-searchbar{
+	-webkit-transition-property: width box-shadow;
+    -webkit-transition-duration: 0.4s;
+	-webkit-transition-timing-function: ease-in-out;
+	transition-property: width box-shadow;
+	transition-duration: 0.4s;
+	transition-timing-function: ease-in-out;
+}
+
+@mixin transition-bulletpoints{
+	-webkit-transition-property: height opacity;
+    -webkit-transition-duration:0.8s;
+	-webkit-transition-timing-function: ease-in-out;
+	transition-property: height opacity;
+	transition-duration:0.8s;
+	transition-timing-function: ease-in-out;
+}
+
+
+@mixin transition-details{
+	-webkit-transition-property: height opacity;
+    -webkit-transition-duration: 0.8s;
+	-webkit-transition-timing-function: ease-in-out;
+	transition-property: height opacity;
+	transition-duration: 0.8s;
+	transition-timing-function: ease-in-out;
+}
+
+@mixin transition-recommendations-hover{
+	-webkit-transition-property: opacity;
+    -webkit-transition-duration: 0.5s;
+	-webkit-transition-timing-function: ease-in-out;
+	transition-property: opacity;
+	transition-duration: 0.5s;
+	transition-timing-function: ease-in-out;
+}
+
+@mixin transition-recommendations-height{
+	-webkit-transition-property: max-height;
+    -webkit-transition-duration: 0.8s;
+	-webkit-transition-timing-function: ease-in-out;
+	transition-property: max-height;
+	transition-duration: 0.8s;
+	transition-timing-function: ease-in-out;
+}
