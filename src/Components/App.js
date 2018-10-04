@@ -13,9 +13,10 @@ class App extends Component {
     this.state = {
       currentMovie : null,
       recommendations : [],
-      input: '',
-      dropdown: [],
-      hover: null
+      input : '',
+      dropdown : [],
+      hover : null,
+      wishlist : []
     }
     this.loadRecMovie = this.loadRecMovie.bind(this);
     this.searchMovies = this.searchMovies.bind(this);
@@ -24,10 +25,21 @@ class App extends Component {
     this.smoothScroll = this.smoothScroll.bind(this);
     this.onMouseEnter = this.onMouseEnter.bind(this);
     this.onMouseLeave = this.onMouseLeave.bind(this);
+    this.addWishlist = this.addWishlist.bind(this);
+    this.removeWishlist = this.removeWishlist.bind(this);
   }
 
   componentWillMount(){
     this.loadRecommendations(`The-Nun`,`Blade-Runner`,`Doctor.Strange`);
+
+    const LocalStorageRef = localStorage.getItem('my_movies');
+    if (LocalStorageRef){
+      this.setState({wishlist : JSON.parse(LocalStorageRef)})
+    }
+  }
+
+  componentWillUpdate(nextProps, nextState){
+    localStorage.setItem('my_movies',JSON.stringify(nextState.wishlist))
   }
 
   async fetchMovie(e){
@@ -81,6 +93,26 @@ class App extends Component {
        }
      }
 
+  addWishlist(){
+    let currentMovie = this.state.currentMovie;
+    let addMovie = {
+      imdbID : currentMovie.imdbID,
+      title : currentMovie.Title,
+      poster : currentMovie.Poster, 
+      year : currentMovie.Year
+   }
+    let wishlist = [...this.state.wishlist];
+      wishlist.push(addMovie)
+      this.setState({ wishlist : wishlist });   
+   
+  }
+
+  removeWishlist(i,id){
+    let arr1 = [...this.state.wishlist].splice(id+1);
+    let arr2 = [...this.state.wishlist].splice(0,id).concat(arr1);
+    this.setState({wishlist : arr2});
+  }
+
   loadRecMovie(i,id){
     this.smoothScroll(1);
     let copyRecommendation = {...this.state.recommendations[id]}
@@ -125,11 +157,14 @@ class App extends Component {
       <main className='container'>
         <SearchBox movieState={this.state.currentMovie} 
                    dropdownState={this.state.dropdown}
+                   wishlistState={this.state.wishlist}
                    dropdownSelect={this.fetchMovie}
                    input={this.state.input} 
-                   handleChange={this.handleChange}/>
+                   handleChange={this.handleChange} 
+                   removeWishlist={this.removeWishlist}/>
         <Bulletpoints state={this.state.currentMovie} 
-                      SmoothScroll={this.smoothScroll} />
+                      SmoothScroll={this.smoothScroll} 
+                      addWishlist={this.addWishlist} />
         <Details state={this.state.currentMovie} />
         <Recommendations handleClick={this.loadRecMovie} 
                          reccState={this.state.recommendations}

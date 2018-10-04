@@ -108,6 +108,99 @@
       			}
     		}
 		}
+
+		#wishlist{
+			    position: relative;
+    			display: inline-block;
+    			width: 100%;
+    			z-index: 1000;
+
+			.wishlist-btn{
+				position: absolute;
+	    		display: flex;
+	    		border: none;
+	    		right: 50px;
+	    		background-color: transparent;
+	    		cursor: pointer;
+	    		opacity: 0.5;
+
+	    		.dropdown-content {
+	    			display: none;
+				    position: absolute;
+				    border-radius: 4px;
+				    background-color: #f9f9f9;
+				    min-width: 200px;
+				    box-shadow: $wishlist-shadow;
+				    padding: 20px 10px;
+				    top: 35px;
+				    right: 13px;
+				    font-family: 'Quicksand';
+    				font-weight: 500;
+				    font-size: 14px;
+				    z-index: 1;
+
+				    .wishlist-item{
+				    	position: relative;
+				    	display: flex;
+				    	align-items: center;
+				    	border-radius: 5px;
+				    	margin-bottom: 10px;
+    					justify-content: space-between;
+					    
+					    span{
+					    	display: none;
+				    			position: absolute;
+							    width: 20px;
+							    height: 20px;
+							    left: 5px;
+    							top: 11px;
+							   	border-radius: 50px;
+							    font-size: 13px;
+							    color: white;
+							    background: red;
+							    cursor: pointer;
+				    		}			    	
+				    	&:hover{
+				    		background: #85a5d624;
+				    		span{
+				    			display: block;
+				    		}
+				    	}
+				    	.title{
+				    		max-width: 110px;
+				    	}
+				    	.year{
+				    		padding-right: 5px;
+				    	}
+				    	.wishlist-img{
+				    		width: 30px;
+				    		height: 46px;
+				    		img{
+				    			display: flex;
+				    			width: 100%;
+				    			height: 100%;
+				    		}
+				    	}
+				    }
+
+				}
+
+				&:hover{
+					opacity: 1;
+					.dropdown-content {
+				    display: block;
+					}
+
+				}
+	    		.material-icons{
+				    border: 2px solid $white-color-light;
+				    border-radius: 4px;
+				    background: $golden-color;
+				    color: $white-color-light;
+	    			font-size: 30px;
+	    		}
+			}
+		}
 	}
 
 	#bulletpoints{
@@ -148,19 +241,24 @@
 						color: $white-color-medium;
 						margin-top: 5px;
 						}
-				}
-				#consoles{
-    				display: flex;
-  					flex-direction: row;  				
-					height: 30px;
 
-					li{
-						width:40px;
-						height: 25px;
-    					margin-top: -5px;	
-						background-repeat: no-repeat;
-						background-size: contain;
-						background-position: center;
+					#add_wishlist{
+						position: relative;
+						width: 20px;
+						height: 20px;
+						border-radius: 50%;
+						align-self: center;
+						margin-left: 20px;
+						background-color: $golden-color;
+						cursor: pointer;
+						
+						span{
+							position: absolute;
+							top: -1.6px;
+    						left: 3.9px;
+    						font-size: 17px;
+							color: $white-color-medium;
+						}
 					}
 				}
 
@@ -187,7 +285,7 @@
 					font-size: 16px;
     				font-weight: 500;
     				color: $white-color-medium;
-					background-color: #959c34;
+					background-color: $golden-color;
 					text-decoration: none;
 					cursor: pointer;
 

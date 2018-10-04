@@ -1,4 +1,5 @@
 import React from 'react';
+import Wishlist from './wishlist';
 import PropTypes from 'prop-types';
 
 
@@ -14,6 +15,8 @@ class SearchBox extends React.Component {
 	});
 		return(
 			<div id='search-container'>
+				<Wishlist wishlistState={this.props.wishlistState}
+						  removeWishlist={this.props.removeWishlist}/>
 			  	<form className={`search-bar ${top}`} onSubmit={e => e.preventDefault()} >
 			  		<label htmlFor='search'><h1>LOOK FOR A MOVIE</h1></label>
   					<input list="options"

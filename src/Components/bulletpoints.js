@@ -22,7 +22,14 @@ const Bulletpoints = (props) => {
 						<li><h1 id='movie-title'>{currentMovie.Title}</h1></li>
 						<li id='release-year'>{year}</li>
 						<li id='genre'>{currentMovie.Genre}</li>
-						<li><a data-easing='easeInCubic' onClick={props.SmoothScroll} id='details-buton'>DETAILS</a></li>
+						<li>
+							<a href='#'
+							   data-easing='easeInCubic' 
+							   onClick={props.SmoothScroll} 
+							   id='details-buton'>DETAILS
+							</a>
+						<button title='Add To Wishlist' id='add_wishlist' onClick={props.addWishlist}><span>+</span></button>	
+						</li>
 						<li>
 							<div id='stars'>
 								{stars}
