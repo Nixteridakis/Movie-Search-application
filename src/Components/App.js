@@ -4,7 +4,8 @@ import Bulletpoints from './bulletpoints';
 import Details from './details';
 import Recommendations from './recommendations';
 import Footer from './footer';
-import ReallySmoothScroll from 'really-smooth-scroll'
+import { Api } from '../restApi';
+import ReallySmoothScroll from 'really-smooth-scroll';
 import '../App.css';
 
 class App extends Component {
@@ -46,7 +47,7 @@ class App extends Component {
     if (e.keyCode === 13){
       let movie = e.target.value.match(/.*(?=\s-)/gi);
       let year = (e.target.value).match(/\d+$/g);
-      let url = `http://www.omdbapi.com/?apikey=be0b8d09&plot=full&t=${movie}&y=${year}`;
+      let url = `${Api.url}?apikey=${Api.key}&plot=full&t=${movie}&y=${year}`;
       const res = await fetch(url);
       const _movie = await res.json();
       this.setState({
@@ -57,7 +58,7 @@ class App extends Component {
 
   async fetchRecommendations(movieId,movieTitle) {
       let movie_Title = movieTitle === undefined ? '' : movieTitle;
-      let url = `http://www.omdbapi.com/?apikey=be0b8d09&plot=full&i=${movieId}&t=${movie_Title}`;
+      let url = `${Api.url}?apikey=${Api.key}&plot=full&i=${movieId}&t=${movie_Title}`;
       const res = await fetch(url);
       const recommended_movie = await res.json();
       let currRecc = [...this.state.recommendations];
@@ -73,7 +74,7 @@ class App extends Component {
 
   async searchMovies(search_Item) {
     if (search_Item.length > 0){
-      let url = `http://www.omdbapi.com/?&apikey=be0b8d09&type=movie&s=${search_Item}`;
+      let url = `${Api.url}?&apikey=${Api.key}&type=movie&s=${search_Item}`;
       const res = await fetch(url);
       const recc_movies = await res.json();
       if (recc_movies.Response === 'True') {
