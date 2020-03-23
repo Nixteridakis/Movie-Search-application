@@ -5,7 +5,6 @@ import Details from './details';
 import Recommendations from './recommendations';
 import Footer from './footer';
 import { Api } from '../restApi';
-import ReallySmoothScroll from 'really-smooth-scroll';
 import '../App.css';
 
 class App extends Component {
@@ -138,7 +137,6 @@ class App extends Component {
   }
   
   smoothScroll(num){
-    ReallySmoothScroll.shim();
     num === 1 ? window.scrollTo(0,0) : window.scrollTo(0,700);
   }
 
